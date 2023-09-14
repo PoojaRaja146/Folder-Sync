@@ -5,6 +5,7 @@ import os
 import sys
 from time import sleep
 
+
 srcFiles = []
 replicaFiles = []
 src_path = sys.argv[1] if len(sys.argv) > 1 else '.'
@@ -37,7 +38,7 @@ def compare_source_and_replice(srcFiles, replicaFiles):
 
 
 def getMissingFiles(srcFiles, replicaFiles):
-    missingFilesInReplica = [a for a in srcFiles if a not in replicaFiles]
+    missingFilesInReplica = [a for a in os.listdir(src_path) if a not in os.listdir(replica_path)]
     logging(str(missingFilesInReplica), 'files missing, needs to be created', '', '')
     create_replica_file(missingFilesInReplica)
 
